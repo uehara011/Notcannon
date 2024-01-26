@@ -5,6 +5,7 @@ import { reactive, ref, watchEffect } from 'vue';
 import { Tank } from "./tank/createTank"; 
 import  { Move }  from './tank/Move';
 import Heart from "./Heart.vue";
+import { enemyTank_move } from './tank/enemy_move';
 
 const moveInstance =  new Move();
 const Attack_Position = reactive({top:170, left:500});
@@ -49,6 +50,7 @@ const timerInterval = setInterval(() => {
     remainingTime.value = 3; // タイマーリセット(180秒)
   } else {
     remainingTime.value--;
+    enemyTank_move();
   }
 }, 1000);
 
